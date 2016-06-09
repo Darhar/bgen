@@ -2,28 +2,8 @@ $(function() {
     //Wait for Pinegrow to wake-up
     $("body").one("pinegrow-ready", function(e, pinegrow) {
         var f = new PgFramework("BGenPluginPlugin", "BGen");
-
-        r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/jquery.min.js'));
-        r.relative_url = 'js/jquery.min.js';
-        r.source = crsaMakeFileFromUrl(r.url);
-        r.footer = true;
-        f.resources.add(r);
-
-        //Create new Pinegrow framework object
-        var r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/Bgen.js')); //relative to plugin js file
-        r.relative_url = 'js/Bgen.js'; //what should the relative url be when resource is used on the page
-        r.source = crsaMakeFileFromUrl(r.url);
-        r.footer = true; //Recommended for JS files.
-        f.resources.add(r);
-
-        r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/custom.js'));
-        r.relative_url = 'js/custom.js';
-        r.source = crsaMakeFileFromUrl(r.url);
-        r.footer = true;
-        f.resources.add(r);
-
-
         var bgen = new PgComponentType('BGen.bgen', 'Background Generator');
+        
         bgen.code = '<canvas \
           height="630" \
           width="630" \
@@ -554,6 +534,26 @@ $(function() {
 
         f.addComponentType(bgen);
         pinegrow.addFramework(f);
+        
+        r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/jquery.min.js'));
+        r.relative_url = 'js/jquery.min.js';
+        r.source = crsaMakeFileFromUrl(r.url);
+        r.footer = true;
+        f.resources.add(r);
+
+        //Create new Pinegrow framework object
+        var r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/Bgen.js')); //relative to plugin js file
+        r.relative_url = 'js/Bgen.js'; //what should the relative url be when resource is used on the page
+        r.source = crsaMakeFileFromUrl(r.url);
+        r.footer = true; //Recommended for JS files.
+        f.resources.add(r);
+
+        r = new PgComponentTypeResource(f.getResourceFile('../Theme/assets/js/custom.js'));
+        r.relative_url = 'js/custom.js';
+        r.source = crsaMakeFileFromUrl(r.url);
+        r.footer = true;
+        f.resources.add(r);        
+        
         var libsection = new PgFrameworkLibSection("BGenPluginPlugin_lib", "Components");
         libsection.setComponentTypes([bgen]);
 
