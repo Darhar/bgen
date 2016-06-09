@@ -538,7 +538,6 @@ $(function() {
         bgen.showBgen = function($el) {
             var id = $el.attr('data-pg-id');
             var code = '$(\'[data-pg-id="' + id + '"]\').trigger(\'bgen-update\');';
-            console.log("code : " + code);
             var page = pinegrow.getPageForElement($el);
             pinegrow.setIgnoreClicks(true);
             pinegrow.executeScriptInPage(page, code);
